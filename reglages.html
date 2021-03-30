@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="my-style.css">
+    <link rel="icon" href="img/favicon-16x16.png">
+    <title>Serveur ESP32</title>
+</head>
+<body>
+    <!-- top -->
+    <div id="top">
+        <img src="img/fablab.png" id="logo" alt="logo"> 
+        <span>Nom du module :</span>
+        <input type="text" id="moduleName" disabled>
+        <button class="btn light">Appliquer</button>
+        <button id="navigationBtn" class="btn discrete" onclick="goHome()">Accueil</button>
+    </div>
+    <!-- body -->
+    <div id="settings">
+        <h4 class="titles">Ajustement de l'axe</h4>
+        <div class="cards" style="width:98%;">
+            <div class="child">
+                <span>Dernière position connue : 
+                    <input type="text" size="10" disabled>
+                </span>
+                <div class="line"></div>
+                <div class="wrapper">
+                    <div class="row">
+                        <button class="plusMin" onclick="moveWith('10')">+</button>
+                        <button class="plusMin" onclick="moveWith('1')">+</button>
+                        <button class="plusMin" onclick="moveWith('3/4')">+</button>
+                        <button class="plusMin" onclick="moveWith('1/2')">+</button>
+                        <button class="plusMin" onclick="moveWith('1/4')">+</button>
+                        <button class="plusMin" onclick="moveWith('1/8')">+</button>
+                        <button class="plusMin" onclick="moveWith('1/16')">+</button>
+                    </div>
+                    <div class="row">
+                        <span>10 pouces</span>
+                        <span>1 pouces</span>
+                        <span>3/4 pouces</span>
+                        <span>1/2 pouces</span>
+                        <span>1/4 pouces</span>
+                        <span>1/8 pouces</span>
+                        <span>1/16 pouces</span>
+                    </div> 
+                    <div class="row">
+                        <button class="plusMin" onclick="moveWith('-10')">-</button>
+                        <button class="plusMin" onclick="moveWith('-1')">-</button>
+                        <button class="plusMin" onclick="moveWith('-3/4')">-</button>
+                        <button class="plusMin" onclick="moveWith('-1/2')">-</button>
+                        <button class="plusMin" onclick="moveWith('-1/4')">-</button>
+                        <button class="plusMin" onclick="moveWith('-1/8')">-</button>
+                        <button class="plusMin" onclick="moveWith('-1/16')">-</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scripts -->
+    <script type="text/javascript" src="my-script.js"></script>
+</body>
+</html>
