@@ -11,7 +11,7 @@
 </head>
 <body onload="indexOnloadfunction()" onbeforeunload="indexunloadfunction()">
     <div id="top">
-        <img src="img/fablab.png" id="logo" alt="logo"> 
+        <img src="imgss/fablab.png" id="logo" alt="logo"> 
         <span>Nom du module :</span>
         <input type="text" id="moduleName" maxlength="20">
         <button class="btn light" onclick="changeModuleName()">Appliquer</button>
@@ -49,42 +49,42 @@
                 <div>
                     <span>Position actuelle :
                         <input type="number" id="actualPosition" size="10" min="0" max="1000">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(1)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(1)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Démarrage moteur : 
                         <input type="number" size="10" id="timeToStart" min="0" max="100">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(2)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(2)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Vitesse du moteur : 
                         <input type="number" size="10" id="motorSpeed" min="100" max="2000">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(3)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(3)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Inertie du moteur : 
                         <input type="number" size="10" id="nbPulsesToStop" min="1" max="1000">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(4)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(4)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Tolérance : 
                         <input type="number" size="10" id="tolerance" min="0.01" max="0.2">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(5)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(5)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Scale factor : 
                         <input type="number" size="10" id="scaleFactor" min="0.05" max="0.4">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(6)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(6)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Distance max : 
                         <input type="text" size="10" id="maxRange" min="0" max="1000">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(7)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(7)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                     <span>Est-ce un axe circulaire ? 
                         <input type="checkbox" id="isDeviceRotatif">
-                        <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(8)" 
+                        <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(8)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                     </span>
                 </div>
@@ -98,7 +98,7 @@
                     <h4 class="subtitles">Déplacements</h4>
                         <span>Commander le moteur : 
                             <input type="number" size="10" id="runTime" min="1" max="100000">
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(9)" 
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(9)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span style="align-self: center;">sens : 
@@ -108,7 +108,7 @@
                     <div style="align-self: center;" class="line"></div>
                         <span>Aller à la position : 
                             <input type="number" size="10" id="goToPos" min="1" max="1000">
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(10)" 
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <button style="align-self:center;" class="btn blue" onclick="goToPos()">Go !</button>
@@ -117,17 +117,17 @@
                     <div>
                         <span>Déplacement : 
                             <input type="text" size="10" disabled>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(9)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(9)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>??? : 
                             <input type="text" size="10" disabled>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(10)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Intertie : 
                             <input type="text" size="10" value="Test" disabled>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(10)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                     </div>
@@ -140,19 +140,19 @@
                         <span>Commander le relais marche 
                             <input type="checkbox" name="" id="marcheRelay">
                             <button class="btn blue" onclick="runRelay('marcheRelay')">Go !</button>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(11)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(11)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Commander le relais sens 
                             <input type="checkbox" name="" id="sensRelay">
                             <button class="btn blue" onclick="runRelay('sensRelay')">Go !</button>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(12)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(12)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Commander la led 
                             <input type="checkbox" id="ledRelay">
                             <button class="btn blue" onclick="runRelay('ledRelay')">Go !</button>
-                            <img src="img/info4.png" class="imgs" onmouseover="displayTooltip(13)"
+                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(13)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                     </div>
