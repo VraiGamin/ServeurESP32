@@ -144,10 +144,15 @@ body{
     color: #0054C5;
     border: 2px solid white;
 }
-.discrete{
-    background-color: #0054C5;
+.navigation{
+    background-color: #00d17a;
     color: white;
-    border: 2px solid white;
+    border: none;
+    padding: 7px 12px;
+    font-weight: 700;
+    font-size: 90%;
+    outline: none;
+    border-radius: 3px;
 }
 .blue:hover{
     background-color: white;
