@@ -289,7 +289,7 @@ input[type=text]:focus,input[type=password]:focus{
     display: flex;
     border: 1px solid;
     padding: 12px 64px 12px 20px;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 #alert > span {
     padding-top: 10px;
