@@ -7,10 +7,54 @@
 - 
 
 */
+#page{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.half{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 50%;
+    align-items: center;
+}
+.half.left{
+    margin: 5px 5px 0 10px; /* TRBL */
+}
+.half.right{
+    margin: 5px 10px 0 5px; /* TRBL */
+}
+.box{
+    background-color: #EAF0F8;
+    border: 2px solid #0054C5;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 100%;
+}
+.boxCol{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+
+    /* margin-left: 2%; */
+}
+
+.boxAlign{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+}
+span{
+    margin-bottom: 5px;
+}
 
 /* #006DFF,  */
 body{
-    margin: 0 0 20px 0;
+    margin: 0;
     padding: 0;
     font-size: 20px;
     position: relative;
@@ -98,13 +142,15 @@ body{
 }
 .subtitles{
     font-size: 1.1em;
+    font-weight: bold;
+    margin: 15px 0 15px 0; /*TRBL*/
 }
 
 .line{
     width: 150px;
     height: 0;
     border-top: 3px solid #0054C5;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 
 /* buttons' styles */
@@ -116,9 +162,8 @@ body{
 }
 
 .normal{
-    position: absolute;
     outline: none;
-    bottom: 15px;
+    margin: 15px;
 }
 
 .btn{
@@ -192,9 +237,6 @@ input[type=text]:focus,input[type=password]:focus{
 /* images' style */
 .imgs{
     width: 25px;
-    height: auto;
-    position: absolute;
-    right: -32px;
 }
 
 /* p::selection{
@@ -215,18 +257,16 @@ input[type=text]:focus,input[type=password]:focus{
     border-radius: 6px;
     padding: 5px 0;
     z-index: 1;
-    top: 45%;
-    left: 50%
 }
 #tooltip::after {
     content: "";
     position: absolute;
-    top: 37%;
-    right: 100%;
-    margin-top: -5px;
+    top: 30%;
+    left: 100%;
+    margin-bottom: -5px;
     border-width: 20px;
     border-style: solid;
-    border-color: transparent #0054C5 transparent transparent;
+    border-color:  transparent transparent transparent #0054C5;
   }
 
 #tooltip > p {
