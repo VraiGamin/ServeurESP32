@@ -15,8 +15,8 @@ var isWebSocketConnected = false;
 
 //the tooltip follows the cursor
 function trackMouse(event){
-    tooltip.style.top = event.pageY  + -55 + 'px';
-    tooltip.style.left = event.pageX  + 40 + 'px';
+    tooltip.style.top = event.pageY  + -50 + 'px';
+    tooltip.style.left = event.pageX  + -245 + 'px';
 }
 //show the tooltip with custom values
 function displayTooltip(id){
