@@ -176,6 +176,11 @@ body{
     font-weight: 700;
     cursor: pointer;
 }
+.disabled{
+    background-color: lightsteelblue;
+    cursor: not-allowed;
+}
+
 /* .btn:active{
 } */
 

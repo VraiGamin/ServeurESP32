@@ -271,45 +271,6 @@ function runRelay(relay){
 		console.error("Caramba !", ex.message);
 	}
 }
-// function runMarche(){
-// 	console.log("Boutons runMarche");
-// 	const marcheRelay = document.getElementById('marcheRelay');
-// 	(marcheRelay.checked ? rep = 'checked' : rep = 'unchecked');
-// 	try {
-// 		websocket.send(JSON.stringify({"marcheRelay":rep}));
-// 	}
-// 	catch(ex) {
-// 		console.error("Caramba !", ex.message);
-// 	}
-// 	//banners
-// 	console.log("Message runMarche envoyé");
-// }
-// function runSens(){ 
-// 	console.log("Bouton runSens");
-// 	const sensRelay = document.getElementById('sensRelay');
-// 	(sensRelay.checked == true ? rep = 'checked' : rep = 'unchecked');
-// 	try {
-// 		websocket.send(JSON.stringify({"sensRelay":rep}));
-// 	}
-// 	catch(ex) {
-// 		console.error("Caramba !", ex.message);
-// 	}
-//     //banners
-// 	console.log("Message runSens envoyé");
-// }
-// function runLed(){
-// 	console.log("Bouton runLed");
-// 	const ledRelay = document.getElementById('ledRelay');
-// 	(ledRelay.checked == true ? rep = 'checked' : rep = 'unchecked');
-// 	try {
-// 		websocket.send(JSON.stringify({"led":rep}));
-// 	}
-// 	catch (ex) {
-// 		console.error("Caramba !", ex.message);
-// 	}
-// 	//banners
-// 	console.log("Message runLed envoyé");
-// }
 
 function goToPos(){
 	try{
@@ -388,12 +349,14 @@ function onMessage(event){
 		   	var inputs = document.getElementsByTagName("INPUT");
 
 		   	for (var i = 0; i < inputs.length; i++) {
-			   inputs[i].disabled = false;
-		   	}
-		  	var buttons =  document.getElementsByTagName("BUTTON");
+				inputs[i].disabled = false;
+				inputs[i].classList.remove('disabled');
+			}
+		  	var buttons = document.getElementsByTagName("BUTTON");
 			  
 			for (var i = 0; i < buttons.length; i++) {
-				   buttons[i].disabled = false;
+				buttons[i].disabled = false;
+				buttons[i].classList.remove('disabled');
 			}
 		   	console.log("Buttons activés !");
 	   	}
@@ -412,11 +375,13 @@ function onMessage(event){
 				
 				for (var i = 0; i < inputs.length; i++) {
 					inputs[i].disabled = true;
+					inputs[i].classList.add('disabled');
 				}
 				var buttons =  document.getElementsByTagName("BUTTON");
 
 				for (var i = 0; i < buttons.length; i++) {
 					buttons[i].disabled = true;
+					buttons[i].classList.add('disabled');
 				}
 				console.log("Boutons désactivés");
 				break;
