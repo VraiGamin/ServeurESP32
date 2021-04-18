@@ -88,16 +88,16 @@
                 <div class="boxCol">
                     <span class="subtitles">Déplacements</span>
                     <span>Commander le moteur : 
-                        <input type="number" size="10" id="runTime" min="1" max="100000">
+                        <input type="number" id="runTime" min="1" max="100000" style="width:60px">
                         <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(9)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
-                    </span>
-                    <span style="align-self: center;">sens : 
+                        sens :
                         <input type="checkbox" id="sensDep">
                         <button class="btn blue">Go !</button>
                     </span>
+                    
                     <span>Aller à la position : 
-                        <input type="number" size="10" id="goToPos" min="1" max="1000">
+                        <input type="number" id="goToPos" min="1" max="1000" style="width:60px">
                         <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                             <button style="align-self:center;" class="btn blue" onclick="goToPos()">Go !</button>

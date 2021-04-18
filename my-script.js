@@ -65,15 +65,15 @@ function displayTooltip(id){
             ttLimit.innerText = '0 à 1000';
             ttExemple.innerText = '200';break;
         case 11:
-            ttUnit.innerText = 'résultat serveur';
+            ttUnit.innerText = '?';
             ttLimit.innerText = '0 à 1000';
             ttExemple.innerText = '200';break;
         case 12:
-            ttUnit.innerText = 'a voir';
+            ttUnit.innerText = '?';
             ttLimit.innerText = '';
             ttExemple.innerText = '';break;
         case 13:
-			ttUnit.innerText = 'a voir';
+			ttUnit.innerText = 'Impulsion';
             ttLimit.innerText = '';
             ttExemple.innerText = '';break;
                                                             
@@ -260,7 +260,12 @@ function runRelay(relay){
 	theRelay = document.getElementById(relay);
 	(theRelay.checked ? rep = 'checked' : rep = 'unchecked');
 	try {
-		websocket.send(JSON.stringify({relay:rep}));
+		if(relay === 'marcheRelay')
+			websocket.send(JSON.stringify({marcheRelay:rep}));
+		if(relay === 'sensRelay')
+			websocket.send(JSON.stringify({sensRelay:rep}));
+		if(relay === 'ledRelay')
+			websocket.send(JSON.stringify({ledRelay:rep}));
 	}
 	catch(ex) {
 		console.error("Caramba !", ex.message);
