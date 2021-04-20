@@ -163,15 +163,14 @@ function verifiyInput(type, input){
 }
 
 function goHome(){
-    window.location.href='/';
+	window.location.href='/';
 }
 
 function changeModuleName(){
 	showAlert('warn', 'Changement du nom de module...');
-	try {
+	try{
 		websocket.send(JSON.stringify({"moduleName":document.getElementById("moduleName").value}));
-	}
-	catch(ex){
+	} catch(ex){
 		showAlert('error', 'Une erreur est survenue, merci de réessayer plus tard.')
 	}
 	//banners
@@ -193,10 +192,9 @@ function goToSettings(){
 }
 
 function saveNodeAddress(){
-	try {
+	try{
 		websocket.send(JSON.stringify({"nodeAddress":document.getElementById("nodeAddress").value}));
-	}
-	catch (ex) {
+	} catch (ex){
 		console.error("Caramba !", ex.message);
 	}
     //banners
@@ -222,8 +220,7 @@ function saveMechanicals(){
     );
 	try{
 		websocket.send(t);
-	}
-	catch (ex) {
+	} catch(ex) {
 		console.error("Caramba !", ex.message);
 	}
 	//banners
@@ -345,7 +342,8 @@ function onMessage(event){
 	   	var obj = JSON.parse(event.data);
 		
 	   	if (obj.hasOwnProperty("actualPosition")){
-			document.getElementById("actualPosition").value = obj["actualPosition"]; // reglage.html ou index.html
+			//reglage.html ou index.html
+			document.getElementById("actualPosition").value = obj["actualPosition"]; 
 		   	var inputs = document.getElementsByTagName("INPUT");
 
 		   	for (var i = 0; i < inputs.length; i++) {
@@ -359,10 +357,11 @@ function onMessage(event){
 				buttons[i].classList.remove('disabled');
 			}
 		   	console.log("Buttons activés !");
+			showAlert('success', 'Fin du traitement serveur !') //test
 	   	}
 	    switch(true){
-			case obj.hasOwnProperty("toMuchClients"):
-				document.location.href='toMuchClients.html';
+			case obj.hasOwnProperty("tooMuchClients"):
+				document.location.href='tooMuchClients.html';
 				break;
 			case obj.hasOwnProperty("movePulses"):
 				document.getElementById("moveInpuls").value = obj["movePulses"];					
