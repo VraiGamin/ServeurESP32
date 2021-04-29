@@ -163,14 +163,15 @@ function verifiyInput(type, input){
 }
 
 function goHome(){
-	window.location.href='/';
+    window.location.href='/';
 }
 
 function changeModuleName(){
 	showAlert('warn', 'Changement du nom de module...');
-	try{
+	try {
 		websocket.send(JSON.stringify({"moduleName":document.getElementById("moduleName").value}));
-	} catch(ex){
+	}
+	catch(ex){
 		showAlert('error', 'Une erreur est survenue, merci de réessayer plus tard.')
 	}
 	//banners
@@ -192,9 +193,10 @@ function goToSettings(){
 }
 
 function saveNodeAddress(){
-	try{
+	try {
 		websocket.send(JSON.stringify({"nodeAddress":document.getElementById("nodeAddress").value}));
-	} catch (ex){
+	}
+	catch (ex) {
 		console.error("Caramba !", ex.message);
 	}
     //banners
@@ -220,7 +222,8 @@ function saveMechanicals(){
     );
 	try{
 		websocket.send(t);
-	} catch(ex) {
+	}
+	catch (ex) {
 		console.error("Caramba !", ex.message);
 	}
 	//banners
@@ -281,13 +284,10 @@ function goToPos(){
 
 function validateIpParameters(){
 	// if(ValidateIPaddress(document.getElementById("ipAddress"))&& ValidateIPaddress(document.getElementById("mask"))){
-		alert("Attention, le module va changer de paramètres ip! (à déveloper !");
+		alert("Attention, le module va changer de paramètres wifi!");
 		
 		websocket.send(JSON.stringify(
 			{
-				"ipAddress":document.getElementById("ipAddress").value,
-				"mask":document.getElementById("mask").value,
-				"gateway":document.getElementById("gateway").value,
 				"ssid":document.getElementById("ssid").value,
 				"password":document.getElementById("password").value
 			}
@@ -342,8 +342,7 @@ function onMessage(event){
 	   	var obj = JSON.parse(event.data);
 		
 	   	if (obj.hasOwnProperty("actualPosition")){
-			//reglage.html ou index.html
-			document.getElementById("actualPosition").value = obj["actualPosition"]; 
+			document.getElementById("actualPosition").value = obj["actualPosition"]; // reglage.html ou index.html
 		   	var inputs = document.getElementsByTagName("INPUT");
 
 		   	for (var i = 0; i < inputs.length; i++) {
@@ -357,11 +356,11 @@ function onMessage(event){
 				buttons[i].classList.remove('disabled');
 			}
 		   	console.log("Buttons activés !");
-			showAlert('success', 'Fin du traitement serveur !') //test
 	   	}
+		var rep; // for isDeviceRotatif
 	    switch(true){
-			case obj.hasOwnProperty("tooMuchClients"):
-				document.location.href='tooMuchClients.html';
+			case obj.hasOwnProperty("toMuchClients"):
+				document.location.href='toMuchClients.html';
 				break;
 			case obj.hasOwnProperty("movePulses"):
 				document.getElementById("moveInpuls").value = obj["movePulses"];					
@@ -391,9 +390,6 @@ function onMessage(event){
 					document.title=obj.moduleName;
 					document.getElementById("nodeAddress").value = obj.nodeAddress;
 					document.getElementById("actualPosition").value = obj.actualPosition;
-					document.getElementById("ipAddress").value = obj.ipAddressText;
-					document.getElementById("gateway").value = obj.gatewayText;
-					document.getElementById("mask").value = obj.maskText;
 					document.getElementById("ssid").value = obj.ssid;
 					document.getElementById("password").value = obj.password;
 					document.getElementById("scaleFactor").value = obj.scaleFactor;
@@ -402,7 +398,8 @@ function onMessage(event){
 					document.getElementById("motorSpeed").value = obj.motorSpeed;
 					document.getElementById("tolerance").value = obj.tolerance;
 					document.getElementById("maxRange").value = obj.maxRange; 
-					document.getElementById("isDeviceRotatif").checked = obj.isDeviceRotatif;
+					rep = (obj.isDeviceRotatif == "true" ? true : false);
+					document.getElementById("isDeviceRotatif").checked = rep;
 				} else { 
 					// page "reglages"
 				  	document.getElementById("moduleName").value = obj.moduleName;
@@ -432,17 +429,14 @@ function onMessage(event){
 			break;	
 	   	} 
 		//switch
-	} 
-	// catch
-	catch (ex) {
-		console.error("Exception dans le traitement d'un message reçu du web socket !", ex.message);
+	} 	catch (e) {
+		(console.error || console.log).call(console, e.stack || e);
 	}
-	console.log("Fin du traitement on message");
 }
 
-// function onError(event){
-// 	alert('[error] ${event.message}');	
-// }
+ function onError(event){
+ 	alert('[error] ${event.message}');
+}
 
 function initWebSocket() {
 	if (!isWebSocketConnected){

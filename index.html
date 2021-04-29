@@ -25,17 +25,17 @@
                     <span class="subtitles">Paramètres Wifi</span>
                     <span>Nom du Wifi : <input type="text" id="ssid" size="10" maxlength="20"></span>
                     <span>Mot de passe : <input type="password" id="password" size="10" maxlength="15"></span>
-                    <button class="btn normal blue">Appliquer</button>
+                    <button class="btn normal blue" onclick="validateIpParameters()">Appliquer</button>
                 </div>
                 <div class="boxCol">
                     <span class="subtitles">Adresse RS422</span>
                     <span>Node : <input type="number" size="10" id="nodeAddress" min="1" max="99"></span>
-                    <button class="btn normal blue">Appliquer</button>
+                    <button class="btn normal blue" onclick="saveNodeAddress()">Appliquer</button>
                 </div>
             </div>
             <div class="box" style="margin-top:5px;">
                 <div class="boxCol">
-                    <span class="subtitles">Paramètres méchaniques</span>
+                    <span class="subtitles">Paramètres mécaniques</span>
                     <div class="boxAlign">
                         <span>Position actuelle :
                             <input type="number" id="actualPosition" size="10" min="0" max="1000">
@@ -78,7 +78,7 @@
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                     </div>
-                    <button class="btn normal blue">Appliquer</button>
+                    <button class="btn normal blue"  onclick="saveMechanicals()">Appliquer</button>
                 </div>
             </div>
         </div>
@@ -106,17 +106,17 @@
                     <span class="subtitles">Résultats serveur</span>
                     <div class="boxAlign">
                         <span>Déplacement : 
-                            <input type="text" size="10" disabled>
+                            <input type="text" id="moveInches" size="10" disabled>
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(11)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Impulsions : 
-                            <input type="text" size="10" disabled>
+                            <input type="text" id="moveInpuls" size="10" disabled>
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(12)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Inertie : 
-                            <input type="text" size="10" value="Test" disabled>
+                            <input type="text" id="inertia" size="10" value="Test" disabled>
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(13)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>

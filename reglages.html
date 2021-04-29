@@ -7,7 +7,7 @@
     <link rel="icon" href="imgs/favicon-16x16.png">
     <title>Serveur ESP32</title>
 </head>
-<body>
+<body onload=reglagesOnloadfunction()>
     <!-- top -->
     <div id="top">
         <img src="imgs/fablab.png" id="logo" alt="logo"> 
@@ -22,12 +22,14 @@
         <div class="cards" style="width:98%;">
             <div class="child">
                 <span>Dernière position connue : 
-                    <input type="text" size="10" disabled>
+                    <input type="text" id="actualPosition" size="10" disabled>
                 </span>
                 <div class="line"></div>
                 <div class="wrapper">
                     <div class="row">
-                        <button class="plusMin" onclick="moveWith('10')">+</button>
+						<button class="plusMin" onclick="moveWith('8')">+</button>
+                        <button class="plusMin" onclick="moveWith('4')">+</button>
+						<button class="plusMin" onclick="moveWith('2')">+</button>
                         <button class="plusMin" onclick="moveWith('1')">+</button>
                         <button class="plusMin" onclick="moveWith('3/4')">+</button>
                         <button class="plusMin" onclick="moveWith('1/2')">+</button>
@@ -36,7 +38,9 @@
                         <button class="plusMin" onclick="moveWith('1/16')">+</button>
                     </div>
                     <div class="row">
-                        <span>10 pouces</span>
+						<span>8 pouces</span>
+						<span>4 pouces</span>
+                        <span>2 pouces</span>
                         <span>1 pouces</span>
                         <span>3/4 pouces</span>
                         <span>1/2 pouces</span>
@@ -45,7 +49,9 @@
                         <span>1/16 pouces</span>
                     </div> 
                     <div class="row">
-                        <button class="plusMin" onclick="moveWith('-10')">-</button>
+						<button class="plusMin" onclick="moveWith('-8')">-</button>
+						<button class="plusMin" onclick="moveWith('-4')">-</button>
+                        <button class="plusMin" onclick="moveWith('-2')">-</button>
                         <button class="plusMin" onclick="moveWith('-1')">-</button>
                         <button class="plusMin" onclick="moveWith('-3/4')">-</button>
                         <button class="plusMin" onclick="moveWith('-1/2')">-</button>
