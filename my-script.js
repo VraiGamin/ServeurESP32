@@ -151,7 +151,7 @@ function verifiyInput(type, input){
 			var regex = new RegExp("");break;
 		case 'goToPos':
 			//int de 1 à 1000
-			var regex = new RegExp("");
+			var regex = new RegExp("");break;
 		case 'ipAdress':
 			//int de 1 à 1000
 			var regex = new RegExp("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
