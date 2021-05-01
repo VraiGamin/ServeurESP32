@@ -439,7 +439,7 @@ function onMessage(event){
 }
 
 function onError(event){
-	// showAlert('danger', '[error] ${event.message}');
+	showAlert('danger', '[error] ${event.message}');
 }
 
 function initWebSocket() {
