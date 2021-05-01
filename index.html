@@ -13,9 +13,9 @@
     <div id="top">
         <img src="imgs/fablab.png" id="logo" alt="logo"> 
         <span>Nom du module :</span>
-        <input type="text" id="moduleName" maxlength="20">
-        <button class="btn light" onclick="changeModuleName()">Appliquer</button>
-        <button id="navigationBtn" class="navigation" onclick="goToSettings()">Réglages</button>
+        <input type="text" id="moduleName" maxlength="20" class="toDisable">
+        <button class="btn light" onclick="changeModuleName()" class="toDisable">Appliquer</button>
+        <button id="navigationBtn" class="navigation green toDisable" onclick="goToSettings()">Réglages</button>
     </div>
     <!-- headers -->
     <div id="page">
@@ -23,14 +23,14 @@
             <div class="box">
                 <div class="boxCol" style="width:120%">
                     <span class="subtitles">Paramètres Wifi</span>
-                    <span>Nom du Wifi : <input type="text" id="ssid" size="10" maxlength="20"></span>
-                    <span>Mot de passe : <input type="password" id="password" size="10" maxlength="15"></span>
+                    <span>Nom du Wifi : <input type="text" id="ssid" size="10" maxlength="20" class="toDisable"></span>
+                    <span>Mot de passe : <input type="password" id="password" size="10" maxlength="15" class="toDisable"></span>
                     <button class="btn normal blue" onclick="validateIpParameters()">Appliquer</button>
                 </div>
                 <div class="boxCol">
                     <span class="subtitles">Adresse RS422</span>
-                    <span>Node : <input type="number" size="10" id="nodeAddress" min="1" max="99"></span>
-                    <button class="btn normal blue" onclick="saveNodeAddress()">Appliquer</button>
+                    <span>Node : <input type="text" id="nodeAddress" maxlength="2" class="toDisable"></span>
+                    <button class="btn normal blue toDisable" onclick="saveNodeAddress()">Appliquer</button>
                 </div>
             </div>
             <div class="box" style="margin-top:5px;">
@@ -38,47 +38,47 @@
                     <span class="subtitles">Paramètres mécaniques</span>
                     <div class="boxAlign">
                         <span>Position actuelle :
-                            <input type="number" id="actualPosition" size="10" min="0" max="1000">
+                            <input type="number" id="actualPosition" size="10" min="0" max="1000" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(1)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Démarrage moteur : 
-                            <input type="number" size="10" id="timeToStart" min="0" max="100">
+                            <input type="number" size="10" id="timeToStart" min="0" max="100" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(2)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Vitesse du moteur : 
-                            <input type="number" size="10" id="motorSpeed" min="100" max="2000">
+                            <input type="number" size="10" id="motorSpeed" min="100" max="2000" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(3)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Inertie du moteur : 
-                            <input type="number" size="10" id="nbPulsesToStop" min="1" max="1000">
+                            <input type="number" size="10" id="nbPulsesToStop" min="1" max="1000" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(4)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Tolérance : 
-                            <input type="number" size="10" id="tolerance" min="0.01" max="0.2">
+                            <input type="number" size="10" id="tolerance" min="0.01" max="0.2" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(5)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Scale factor : 
-                            <input type="number" size="10" id="scaleFactor" min="0.05" max="0.4">
+                            <input type="number" size="10" id="scaleFactor" min="0.05" max="0.4" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(6)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Distance max : 
-                            <input type="number" size="10" id="maxRange" min="0" max="1000">
+                            <input type="number" size="10" id="maxRange" min="0" max="1000" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(7)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Est-ce un axe circulaire ? 
-                            <input type="checkbox" id="isDeviceRotatif">
+                            <input type="checkbox" id="isDeviceRotatif" class="toDisable">
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(8)" 
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                     </div>
-                    <button class="btn normal blue"  onclick="saveMechanicals()">Appliquer</button>
+                    <button class="btn normal blue toDisable" onclick="saveMechanicals()">Appliquer</button>
                 </div>
             </div>
         </div>
@@ -88,19 +88,19 @@
                 <div class="boxCol">
                     <span class="subtitles">Déplacements</span>
                     <span>Commander le moteur : 
-                        <input type="number" id="runTime" min="1" max="100000" style="width:60px">
+                        <input type="number" id="runTime" min="1" max="100000" style="width:60px" class="toDisable">
                         <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(9)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         sens :
-                        <input type="checkbox" id="sensDep">
-                        <button class="btn blue" onclick="runForA_GivenTime()">Go !</button>
+                        <input type="checkbox" id="sensDep" class="toDisable">
+                        <button class="btn blue toDisable" onclick="runForA_GivenTime()">Go !</button>
                     </span>
                     
                     <span>Aller à la position : 
-                        <input type="number" id="goToPos" min="1" max="1000" style="width:60px">
+                        <input type="number" id="goToPos" min="1" max="1000" style="width:60px" class="toDisable">
                         <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
-                            <button style="align-self:center;" class="btn blue" onclick="goToPos()">Go !</button>
+                        <button style="align-self:center;" class="btn blue toDisable" onclick="goToPos()">Go !</button>
                     </span>
                     <div class="line"></div>
                     <span class="subtitles">Résultats serveur</span>
@@ -116,7 +116,7 @@
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
                         <span>Inertie : 
-                            <input type="text" id="inertia" size="10" value="Test" disabled>
+                            <input type="text" id="inertia" size="10" disabled>
                             <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(13)"
                                 onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
                         </span>
@@ -128,22 +128,16 @@
                     <span class="subtitles">Relais</span>
                     <div class="boxAlign">
                         <span>Commander le relais marche 
-                            <input type="checkbox" name="" id="marcheRelay">
-                            <button class="btn blue" onclick="runRelay('marcheRelay')">Go !</button>
-                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(14)"
-                                onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
+                            <input type="checkbox" id="marcheRelay" class="toDisable">
+                            <button class="btn blue toDisable" onclick="runRelay('marcheRelay')">Go !</button>
                         </span>
                         <span>Commander le relais sens 
-                            <input type="checkbox" name="" id="sensRelay">
-                            <button class="btn blue" onclick="runRelay('sensRelay')">Go !</button>
-                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(15)"
-                                onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
+                            <input type="checkbox" id="sensRelay" class="toDisable">
+                            <button class="btn blue toDisable" onclick="runRelay('sensRelay')">Go !</button>
                         </span>
                         <span>Commander la led 
-                            <input type="checkbox" id="ledRelay">
-                            <button class="btn blue" onclick="runRelay('ledRelay')">Go !</button>
-                            <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(16)"
-                                onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
+                            <input type="checkbox" id="ledRelay" class="toDisable">
+                            <button class="btn blue toDisable" onclick="runRelay('ledRelay')">Go !</button>
                         </span>
                     </div>
                 </div>

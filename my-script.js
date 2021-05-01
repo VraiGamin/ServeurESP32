@@ -65,15 +65,15 @@ function displayTooltip(id){
             ttLimit.innerText = '0 à 1000';
             ttExemple.innerText = '200';break;
         case 11:
-            ttUnit.innerText = '?';
+            ttUnit.innerText = 'pouce';
             ttLimit.innerText = '0 à 1000';
             ttExemple.innerText = '200';break;
         case 12:
-            ttUnit.innerText = '?';
+            ttUnit.innerText = 'impulsion';
             ttLimit.innerText = '';
             ttExemple.innerText = '';break;
         case 13:
-			ttUnit.innerText = 'Impulsion';
+			ttUnit.innerText = 'impulsion';
             ttLimit.innerText = '';
             ttExemple.innerText = '';break;
                                                             
@@ -343,24 +343,27 @@ function onMessage(event){
 		
 	   	if (obj.hasOwnProperty("actualPosition")){
 			document.getElementById("actualPosition").value = obj["actualPosition"]; // reglage.html ou index.html
-		   	var inputs = document.getElementsByTagName("INPUT");
+		   	
+			var elmsToDisable = document.getElementsByClassName("toDisable");
+			var navBtn = document.getElementById('navigationBtn');
+			navBtn.classList.remove('navDisabled');
+			navBtn.classList.add('green');
 
-		   	for (var i = 0; i < inputs.length; i++) {
-				inputs[i].disabled = false;
-				inputs[i].classList.remove('disabled');
+		   	for(let i = 0; i < elmsToDisable.length; i++) {
+				elem = elmsToDisable[i];
+				elem.disabled = false;
+				if(elem.tagName === 'INPUT') {
+					elem.classList.remove('inputsDisabled');
+				} else if(elem.tagName === 'BUTTON') {
+					elem.classList.remove('btnsDisabled');
+					elem.classList.add('blue');
+				}
 			}
-		  	var buttons = document.getElementsByTagName("BUTTON");
-			  
-			for (var i = 0; i < buttons.length; i++) {
-				buttons[i].disabled = false;
-				buttons[i].classList.remove('disabled');
-			}
-		   	console.log("Buttons activés !");
 	   	}
 		var rep; // for isDeviceRotatif
 	    switch(true){
-			case obj.hasOwnProperty("toMuchClients"):
-				document.location.href='toMuchClients.html';
+			case obj.hasOwnProperty("tooMuchClients"):
+				document.location.href='tooMuchClients.html';
 				break;
 			case obj.hasOwnProperty("movePulses"):
 				document.getElementById("moveInpuls").value = obj["movePulses"];					
@@ -369,19 +372,20 @@ function onMessage(event){
 				break;
 		   	case obj.hasOwnProperty("hideButtons"):
 			   	websocket.send(JSON.stringify({"handshake":"buttons"}));
-				var inputs = document.getElementsByTagName("INPUT");
 				
-				for (var i = 0; i < inputs.length; i++) {
-					inputs[i].disabled = true;
-					inputs[i].classList.add('disabled');
+				navBtn.classList.remove('green');
+				navBtn.classList.add('navDisabled');
+	   
+				for(let i = 0; i < elmsToDisable.length; i++) {
+					elem = elmsToDisable[i];
+					elem.disabled = true;
+					if(elem.tagName === 'INPUT') {
+						elem.classList.add('inputsDisabled');
+					} else if(elem.tagName === 'BUTTON') {
+						elem.classList.remove('blue');
+						elem.classList.add('btnsDisabled');
+					}
 				}
-				var buttons =  document.getElementsByTagName("BUTTON");
-
-				for (var i = 0; i < buttons.length; i++) {
-					buttons[i].disabled = true;
-					buttons[i].classList.add('disabled');
-				}
-				console.log("Boutons désactivés");
 				break;
 			case obj.hasOwnProperty("moduleName"):
 				if (!window.location.pathname.includes("reglages")){ 
@@ -434,8 +438,8 @@ function onMessage(event){
 	}
 }
 
- function onError(event){
- 	alert('[error] ${event.message}');
+function onError(event){
+	// showAlert('danger', '[error] ${event.message}');
 }
 
 function initWebSocket() {
