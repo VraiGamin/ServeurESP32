@@ -65,15 +65,15 @@ function displayTooltip(id){
             ttLimit.innerText = '0 à 1000';
             ttExemple.innerText = '200';break;
         case 11:
-            ttUnit.innerText = 'pouce';
-            ttLimit.innerText = '0 à 1000';
-            ttExemple.innerText = '200';break;
-        case 12:
-            ttUnit.innerText = 'impulsion';
-            ttLimit.innerText = '';
-            ttExemple.innerText = '';break;
-        case 13:
-			ttUnit.innerText = 'impulsion';
+            ttUnit.innerText = 'pouce';	
+			ttLimit.innerText = '0 à 1000';	
+			ttExemple.innerText = '200';break;	
+		case 12:		
+			ttUnit.innerText = 'impulsion';	
+			ttLimit.innerText = '';	
+			ttExemple.innerText = '';break;	
+		case 13:	
+            ttUnit.innerText = 'Impulsion';	
             ttLimit.innerText = '';
             ttExemple.innerText = '';break;
                                                             
@@ -85,6 +85,21 @@ function displayTooltip(id){
 //hide the tooltip
 function hideTooltip(){
     tooltip.style.display = "none";
+}
+
+function manageBtn() {
+	fieldGTP = document.getElementById('goToPos');
+	btnGTP = document.getElementById('goToPosBtn');
+	if(fieldGTP.value === '' || fieldGTP.value === ' '){
+		btnGTP.disabled = true;
+		btnGTP.classList.remove('blue');
+		btnGTP.classList.add('btnsDisabled');
+	} else {
+		btnGTP.disabled = false;
+		btnGTP.classList.remove('btnsDisabled');
+		btnGTP.classList.add('blue');
+	}
+	console.log('test');
 }
 
 //show the alert on user action
@@ -151,7 +166,7 @@ function verifiyInput(type, input){
 			var regex = new RegExp("");break;
 		case 'goToPos':
 			//int de 1 à 1000
-			var regex = new RegExp("");break;
+			var regex = new RegExp(""); break;
 		case 'ipAdress':
 			//int de 1 à 1000
 			var regex = new RegExp("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
@@ -172,11 +187,8 @@ function changeModuleName(){
 		websocket.send(JSON.stringify({"moduleName":document.getElementById("moduleName").value}));
 	}
 	catch(ex){
-		showAlert('error', 'Une erreur est survenue, merci de réessayer plus tard.')
+		showAlert('danger', "Une erreur est survenue, merci de réessayer plus tard.");
 	}
-	//banners
-	showAlert('success', 'Le nom du module a bien été changé.')
-	console.log("Message moduleName envoyé");
 }
 
 function goToSettings(){
@@ -193,18 +205,17 @@ function goToSettings(){
 }
 
 function saveNodeAddress(){
+	showAlert('warn', "Changement de l'adresse RS422");
 	try {
 		websocket.send(JSON.stringify({"nodeAddress":document.getElementById("nodeAddress").value}));
 	}
 	catch (ex) {
-		console.error("Caramba !", ex.message);
+		showAlert("danger", "Une erreur est survenue, merci de réessayer plus tard.");
 	}
-    //banners
-	console.log("Message save node adresse envoyé");
 }
 
 function saveMechanicals(){ 
-	console.log("Bouton save mechanicals");
+	showAlert('warn', "Changement des données mécaniques");
 	const isDeviceRotatif = document.getElementById('isDeviceRotatif');
 	(isDeviceRotatif.checked == true ? rep = 'checked' : rep = 'unchecked');
 	
@@ -224,10 +235,8 @@ function saveMechanicals(){
 		websocket.send(t);
 	}
 	catch (ex) {
-		console.error("Caramba !", ex.message);
+		showAlert('danger', 'Une erreur est survenue, merci de réessayer plus tard.');
 	}
-	//banners
-	console.log("Message save mechanicals envoyé");
 }
 
 function runForA_GivenTime(){
@@ -236,10 +245,10 @@ function runForA_GivenTime(){
 	(sensDep.checked ? rep = 'checked' : rep = 'unchecked');
 	try {
 		websocket.send(JSON.stringify({"time":document.getElementById('runTime').value, "sensDep":rep}));
-		console.log("Message time envoyé");
+		showAlert("warn", "L'ordre de déplacement pour un temps donné a été envoyé.");
 	} 
 	catch (ex) {
-		console.error("Caramba !", ex.message);
+		showAlert("danger", "Une erreur est survenue, merci de réessayer plus tard.");
 	}
     //banners
 }
@@ -248,10 +257,10 @@ function moveWith(dep){
 	console.log("Bouton déplacement relatif");
 	try {
 		websocket.send(JSON.stringify({"relativeMove":dep}));
-		console.log("Message relativeMove envoyé");
+		showAlert("warn", "L'ordre de déplacement relatif a été envoyé."); 
 	}
 	catch (ex) {
-		console.error("Caramba !", ex.message);
+		showAlert("danger", 'Une erreur est survenue, merci de réessayer plus tard.');
 	}
     //banners
 }
@@ -270,6 +279,7 @@ function runRelay(relay){
 	catch(ex) {
 		console.error("Caramba !", ex.message);
 	}
+	 showAlert('warn', 'Le relais a été commandé.');
 }
 
 function goToPos(){
@@ -277,24 +287,21 @@ function goToPos(){
 		websocket.send(JSON.stringify({"newPos":document.getElementById('goToPos').value}));
 	} 
 	catch(ex) {
-		console.error("Caramba !", ex.message);
+		 showAlert('danger', 'Le nom du module a bien été changé.');
 	}
-	console.log("Message goToPos envoyé");
+	 showAlert('warn', "L'ordre d'aller a une position absolue a été envoyé.");
 }
 
 function validateIpParameters(){
 	// if(ValidateIPaddress(document.getElementById("ipAddress"))&& ValidateIPaddress(document.getElementById("mask"))){
-		alert("Attention, le module va changer de paramètres wifi!");
+	showAlert('warn',"Attention, le module va changer de paramètres wifi!");
 		
-		websocket.send(JSON.stringify(
-			{
-				"ssid":document.getElementById("ssid").value,
-				"password":document.getElementById("password").value
-			}
-		));
-	// } else {
-		alert("Un ou plusieurs paramètres ne sont pas corrects");
-	// }	
+	websocket.send(JSON.stringify(
+		{
+			"ssid":document.getElementById("ssid").value,
+			"password":document.getElementById("password").value
+		}
+	));	
 }
 
 function OnStateChange(){
@@ -309,14 +316,16 @@ function OnStateChange(){
 		   consol.log("Partial data has been received, but this content is not available yet");break;
 		case 4:
 		   console.log("All data has been received:");break;
-	};
+	}
 }
 
 function indexOnloadfunction(){
+	hideAlert();
 	initWebSocket();
 }
 
 function indexunloadfunction(){
+	hideAlert();
 	console.trace();
 }
 
@@ -346,8 +355,10 @@ function onMessage(event){
 		   	
 			var elmsToDisable = document.getElementsByClassName("toDisable");
 			var navBtn = document.getElementById('navigationBtn');
+			var thePage = document.getElementById('body');
 			navBtn.classList.remove('navDisabled');
 			navBtn.classList.add('green');
+			thePage.style.cursor = "auto";
 
 		   	for(let i = 0; i < elmsToDisable.length; i++) {
 				elem = elmsToDisable[i];
@@ -369,24 +380,30 @@ function onMessage(event){
 				document.getElementById("moveInpuls").value = obj["movePulses"];					
 				document.getElementById("moveInches").value = obj["move"];
 				document.getElementById("inertia").value = obj["inertia"];
+				showAlert('success', 'Fin du déplacement.');
 				break;
 		   	case obj.hasOwnProperty("hideButtons"):
 			   	websocket.send(JSON.stringify({"handshake":"buttons"}));
-				
+				var elmsToDisable = document.getElementsByClassName("toDisable");
+				var navBtn = document.getElementById('navigationBtn');
 				navBtn.classList.remove('green');
 				navBtn.classList.add('navDisabled');
-	   
+				thePage.style.cursor = "not-allowed";
+
 				for(let i = 0; i < elmsToDisable.length; i++) {
 					elem = elmsToDisable[i];
 					elem.disabled = true;
 					if(elem.tagName === 'INPUT') {
 						elem.classList.add('inputsDisabled');
 					} else if(elem.tagName === 'BUTTON') {
+						console.log(elem.id, elem.classList);
 						elem.classList.remove('blue');
 						elem.classList.add('btnsDisabled');
 					}
 				}
+				
 				break;
+				
 			case obj.hasOwnProperty("moduleName"):
 				if (!window.location.pathname.includes("reglages")){ 
 					// index.html initials parameters
@@ -402,8 +419,7 @@ function onMessage(event){
 					document.getElementById("motorSpeed").value = obj.motorSpeed;
 					document.getElementById("tolerance").value = obj.tolerance;
 					document.getElementById("maxRange").value = obj.maxRange; 
-					rep = (obj.isDeviceRotatif == "true" ? true : false);
-					document.getElementById("isDeviceRotatif").checked = rep;
+					document.getElementById("isDeviceRotatif").checked = (obj.isDeviceRotatif == "true" ? true : false);
 				} else { 
 					// page "reglages"
 				  	document.getElementById("moduleName").value = obj.moduleName;
@@ -411,25 +427,33 @@ function onMessage(event){
 				   	document.getElementById("actualPosition").value = obj.actualPosition; 
 				}
 				break;
+				
 			case obj.hasOwnProperty("handshake"):
 				var t = obj.handshake;
 				if(t.includes("wifi")){
-				   console.log("Paramètres wifi enregistrés avec succés sur le module");
+					showAlert('success', "Les paramètres wifi ont été enregistrés avec succes");
 				}
+				
 				if (t.includes("nodeAddress")){
-				   console.log("Adresse du node RS422 enregistré avec succés sur le module");
+					//banners
+					showAlert('success', "L'adresse RS422 du module a bien été changée.");
 				}
+				
 				if (t.includes("mechanicals")){
-				   console.log("Paramètres mécaniques enregistrés avec succés sur le module");
+				   showAlert('success', "Paramètres mécaniques enregistrés avec succés sur le module");
 				}
+				
 				if (t.includes("moduleName")){
-				   var t = "Le nom du module est enregistré avec succés sur le module.\rAttention à la nouvelle mise sous tension, l'url sera: ";
-				   t = t.concat("http://" + document.getElementById("moduleName").value + ".local");
-				   console.log(t);
+				   var u = "Le nom du module est enregistré avec succés sur le module.\rAttention à la nouvelle mise sous tension, l'url sera: ";
+				   u = t.concat("http://" + document.getElementById("moduleName").value + ".local");
+				   //banners
+				   showAlert('success', 'Le nom du module a bien été changé.');
 				}
+				
 				break;
+				
 			case obj.hasOwnProperty('heartbeat'):
-				console.log("heartbeat reçu")
+				console.log("heartbeat reçu");
 			break;	
 	   	} 
 		//switch
@@ -438,8 +462,8 @@ function onMessage(event){
 	}
 }
 
-function onError(event){
-	showAlert('danger', '[error] ${event.message}');
+ function onError(event){
+ 	// alert('[error] ${event.message}');
 }
 
 function initWebSocket() {
@@ -454,5 +478,6 @@ function initWebSocket() {
 }
 
 function reglagesOnloadfunction() {
+	hideAlert();
 	initWebSocket();
 }

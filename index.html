@@ -9,7 +9,7 @@
     <!-- script(s) -->
     <script type="text/javascript" src="my-script.js" defer></script>
 </head>
-<body onload="indexOnloadfunction()" onbeforeunload="indexunloadfunction()">
+<body onload="indexOnloadfunction()" onbeforeunload="indexunloadfunction()" id="body">
     <div id="top">
         <img src="imgs/fablab.png" id="logo" alt="logo"> 
         <span>Nom du module :</span>
@@ -25,7 +25,7 @@
                     <span class="subtitles">Paramètres Wifi</span>
                     <span>Nom du Wifi : <input type="text" id="ssid" size="10" maxlength="20" class="toDisable"></span>
                     <span>Mot de passe : <input type="password" id="password" size="10" maxlength="15" class="toDisable"></span>
-                    <button class="btn normal blue" onclick="validateIpParameters()">Appliquer</button>
+                    <button class="btn normal blue toDisable" id="btn_appliquer_wifi" onclick="validateIpParameters()">Appliquer</button>
                 </div>
                 <div class="boxCol">
                     <span class="subtitles">Adresse RS422</span>
@@ -97,10 +97,10 @@
                     </span>
                     
                     <span>Aller à la position : 
-                        <input type="number" id="goToPos" min="1" max="1000" style="width:60px" class="toDisable">
+                        <input type="number" id="goToPos" min="1" max="1000" style="width:60px" class="toDisable" onkeyup="manageBtn()">
                         <img src="imgs/info4.png" class="imgs" onmouseover="displayTooltip(10)" 
                             onmouseout="hideTooltip()" onmousemove="trackMouse(event)">
-                        <button style="align-self:center;" class="btn blue toDisable" onclick="goToPos()">Go !</button>
+                        <button style="align-self:center;" id="goToPosBtn" class="btn blue toDisable" onclick="goToPos()" disabled="disabled">Go !</button>
                     </span>
                     <div class="line"></div>
                     <span class="subtitles">Résultats serveur</span>

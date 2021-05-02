@@ -14,7 +14,7 @@
         <span>Nom du module :</span>
         <input type="text" id="moduleName" disabled>
         <button class="btn light">Appliquer</button>
-        <button id="navigationBtn" class="navigation green toDisabled" onclick="goHome()">Accueil</button>
+        <button id="navigationBtn" class="navigation" onclick="goHome()">Accueil</button>
     </div>
     <!-- body -->
     <div id="settings">
@@ -27,15 +27,15 @@
                 <div class="line"></div>
                 <div class="wrapper">
                     <div class="row">
-						<button class="plusMin" onclick="moveWith('8')">+</button>
-                        <button class="plusMin" onclick="moveWith('4')">+</button>
-						<button class="plusMin" onclick="moveWith('2')">+</button>
-                        <button class="plusMin" onclick="moveWith('1')">+</button>
-                        <button class="plusMin" onclick="moveWith('3/4')">+</button>
-                        <button class="plusMin" onclick="moveWith('1/2')">+</button>
-                        <button class="plusMin" onclick="moveWith('1/4')">+</button>
-                        <button class="plusMin" onclick="moveWith('1/8')">+</button>
-                        <button class="plusMin" onclick="moveWith('1/16')">+</button>
+						<button class="plusMin blue toDisable" onclick="moveWith('8')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('4')">+</button>
+						<button class="plusMin blue toDisable" onclick="moveWith('2')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('1')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('3/4')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('1/2')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('1/4')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('1/8')">+</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('1/16')">+</button>
                     </div>
                     <div class="row">
 						<span>8 pouces</span>
@@ -49,26 +49,32 @@
                         <span>1/16 pouces</span>
                     </div> 
                     <div class="row">
-						<button class="plusMin" onclick="moveWith('-8')">-</button>
-						<button class="plusMin" onclick="moveWith('-4')">-</button>
-                        <button class="plusMin" onclick="moveWith('-2')">-</button>
-                        <button class="plusMin" onclick="moveWith('-1')">-</button>
-                        <button class="plusMin" onclick="moveWith('-3/4')">-</button>
-                        <button class="plusMin" onclick="moveWith('-1/2')">-</button>
-                        <button class="plusMin" onclick="moveWith('-1/4')">-</button>
-                        <button class="plusMin" onclick="moveWith('-1/8')">-</button>
-                        <button class="plusMin" onclick="moveWith('-1/16')">-</button> 
+						<button class="plusMin blue toDisable" onclick="moveWith('-8')">-</button>
+						<button class="plusMin blue toDisable" onclick="moveWith('-4')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-2')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-1')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-3/4')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-1/2')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-1/4')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-1/8')">-</button>
+                        <button class="plusMin blue toDisable" onclick="moveWith('-1/16')">-</button> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- alert -->
+	<!-- alert -->
     <div id="alert" class="">
         <span id="alertStrong"></span>
         <span id="alertText"></span>
         <button id="close" onclick="hideAlert()">×</button>
     </div>
+	<div id="movePulses" class="">
+		<input type="hidden" id="moveInches" size="10" disabled>
+		<input type="hidden" id="moveInpuls" size="10" disabled>
+		<input type="hidden" id="inertia" size="10" value="Test" disabled>
+	</div>
+	
     <!-- scripts -->
     <script type="text/javascript" src="my-script.js"></script>
 </body>
